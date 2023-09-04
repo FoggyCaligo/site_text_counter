@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="mobile_style.css" />
+    <script type="text/javascript" src="mobile.js"></script> 
+
+
+
+</head>
+<body>
+    <!--로딩 때 창 크기에 따라 데스크탑/모바일 판단해서 해당 페이지로 옮겨주기-->
+    <script>
+        if(window.innerHeight<window.innerWidth)
+            document.location.href="../desktop/desktop.html";
+    </script>
+    mobile
+
+    
+    <!--맨 위의 입력창-->
+    <div id="input" style="width:max-content; height:fit-content">
+        <details>
+            <summary class="menu" id="ingr1">설탕</summary>
+            <div class="menu-elem" onclick=" ingr1_change('설탕')">설탕</div>
+            <div class="menu-elem" onclick=" ingr1_change('고추가루')">고추가루</div>
+            <div class="menu-elem" onclick=" ingr1_change('소금')">소금</div>
+            <div class="menu-elem" onclick=" ingr1_change('')">설탕</div>
+            <div class="menu-elem" onclick=" ingr1_change('설탕')">설탕</div>
+            <div class="menu-elem" onclick=" ingr1_change('설탕')">설탕</div>
+            <div class="menu-elem" onclick=" ingr1_change('설탕')">설탕</div>
+            <div class="menu-elem" onclick=" ingr1_change('설탕')">설탕</div>
+            <div class="menu-elem" onclick=" ingr1_change('고추가루')">고추가루</div>
+            
+         </details>
+        
+        
+      
+    </div>
+
+
+    
+</body>
+</html>
