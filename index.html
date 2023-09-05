@@ -22,44 +22,45 @@
     
     <!--맨 위의 입력창-->
     <div id="input" style="width:max-content; height:fit-content;">
+
         <!--종류 입력-->
         <details style="float:left;">
-            <summary class="menu" id="ingr1">설탕</summary>
-            <div class="menu-elem" onclick=" ingr1_change('설탕')">설탕</div>
-            <div class="menu-elem" onclick=" ingr1_change('고추가루')">고추가루</div>
-            <div class="menu-elem" onclick=" ingr1_change('소금')">소금</div>
-            <div class="menu-elem" onclick=" ingr1_change('천일염')">천일염</div>
-            <div class="menu-elem" onclick=" ingr1_change('다진마늘')">다진마늘</div>
-            <div class="menu-elem" onclick=" ingr1_change('고추장')">고추장</div>
-            <div class="menu-elem" onclick=" ingr1_change('된장')">된장</div>
-            <div class="menu-elem" onclick=" ingr1_change('쌈장')">쌈장</div>
-            <div class="menu-elem" onclick=" ingr1_change('올리브오일')">올리브오일</div>
-            <div class="menu-elem" onclick=" ingr1_change('식용유')">식용유</div>
-            <div class="menu-elem" onclick=" ingr1_change('발사믹소스')">발사믹소스</div>
-            <div class="menu-elem" onclick=" ingr1_change('스리라차 소스')">스리라차 소스</div>
-            <div class="menu-elem" onclick=" ingr1_change('타바스코 핫소스')">타바스코 핫소스</div>
-            <div class="menu-elem" onclick=" ingr1_change('간장')">간장</div>
+            <summary class="menu" id="ingr1" onchange="update()">설탕</summary>
+            <div class="menu-elem" onclick=" ingr1_change('설탕'); update();">설탕</div>
+            <div class="menu-elem" onclick=" ingr1_change('고추가루'); update();">고추가루</div>
+            <div class="menu-elem" onclick=" ingr1_change('소금'); update();">소금</div>
+            <div class="menu-elem" onclick=" ingr1_change('천일염'); update();">천일염</div>
+            <div class="menu-elem" onclick=" ingr1_change('다진마늘'); update();">다진마늘</div>
+            <div class="menu-elem" onclick=" ingr1_change('고추장'); update();">고추장</div>
+            <div class="menu-elem" onclick=" ingr1_change('된장'); update();">된장</div>
+            <div class="menu-elem" onclick=" ingr1_change('쌈장'); update();">쌈장</div>
+            <div class="menu-elem" onclick=" ingr1_change('올리브오일'); update();">올리브오일</div>
+            <div class="menu-elem" onclick=" ingr1_change('식용유'); update();">식용유</div>
+            <div class="menu-elem" onclick=" ingr1_change('발사믹소스'); update();">발사믹소스</div>
+            <div class="menu-elem" onclick=" ingr1_change('스리라차 소스'); update();">스리라차 소스</div>
+            <div class="menu-elem" onclick=" ingr1_change('타바스코 핫소스'); update();">타바스코 핫소스</div>
+            <div class="menu-elem" onclick=" ingr1_change('간장'); update();">간장</div>
 
          </details>
         
         <!--양 입력-->
-        <input type="number" placeholder="130" style="float:left;">
+        <input type="number" id="amount" placeholder="10" style="float:left;" onchange="update()">
 
         <!--단위 입력-->
         <!--종류 입력-->
         <details style="float:left;">
-            <summary class="menu" id="ingr2">g</summary>
-            <div class="menu-elem" onclick=" ingr2_change('g')">g</div>
-            <div class="menu-elem" onclick=" ingr2_change('kg')">kg</div>
-            <div class="menu-elem" onclick=" ingr2_change('mg')">mg</div>
-            <div class="menu-elem" onclick=" ingr2_change('밥숟가락')">밥숟가락</div>
-            <div class="menu-elem" onclick=" ingr2_change('차숟가락')">차숟가락</div>
-            <div class="menu-elem" onclick=" ingr2_change('컵')">컵</div>
-            <div class="menu-elem" onclick=" ingr2_change('L')">L</div>
-            <div class="menu-elem" onclick=" ingr2_change('ml')">ml</div>
-            <div class="menu-elem" onclick=" ingr2_change('cc')">cc</div>
-            <div class="menu-elem" onclick=" ingr2_change('oz')">oz</div>
-            <div class="menu-elem" onclick=" ingr2_change('pound')">pound</div>
+            <summary class="menu" id="ingr2" >g</summary>
+            <div class="menu-elem" onclick=" ingr2_change('g'); update();">g</div>
+            <div class="menu-elem" onclick=" ingr2_change('kg'); update();">kg</div>
+            <div class="menu-elem" onclick=" ingr2_change('mg'); update();">mg</div>
+            <div class="menu-elem" onclick=" ingr2_change('밥숟가락'); update();">밥숟가락</div>
+            <div class="menu-elem" onclick=" ingr2_change('차숟가락'); update();">차숟가락</div>
+            <div class="menu-elem" onclick=" ingr2_change('컵'); update();">컵</div>
+            <div class="menu-elem" onclick=" ingr2_change('L'); update();">L</div>
+            <div class="menu-elem" onclick=" ingr2_change('ml'); update();">ml</div>
+            <div class="menu-elem" onclick=" ingr2_change('cc'); update();">cc</div>
+            <div class="menu-elem" onclick=" ingr2_change('oz'); update();">oz</div>
+            <div class="menu-elem" onclick=" ingr2_change('pound'); update();">pound</div>
          </details>
     </div>
 
@@ -83,12 +84,42 @@
     </div>
 
     <!--변환연산-->
-    <script>
+    <script>//기본 단위 : g,l
+        
+
+        function update(){
+            //alert("test");
+            m=0;//부피 l
+            w=0;//무게(질량) g
+            d=0;//밀도 g/cm3(g/cm3에 1g=1000mg)
+            v = 10;
+            var v = document.getElementById("amount").value;
+            switch(document.getElementById("ingr2").innerHTML){
+                case "g": w = v; break;
+                case 'mg': w = v/1000; break;
+                case 'kg': w = v*1000; break;
+            }
+            alert(toString(v));
+        }
+
 
 
 
     </script>
 
+
+    <script>
+        function get_ing1(){
+
+        }
+        function get_ing2(){
+
+        }
+        function get_amount(){
+            const v = document.getElementById('amount').value;
+
+        }
+    </script>
     
 </body>
 </html>
