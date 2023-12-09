@@ -40,7 +40,7 @@
             <div class="menu-elem" onclick=" ingr1_change('스리라차 소스'); update();">스리라차 소스</div>
             <div class="menu-elem" onclick=" ingr1_change('타바스코 핫소스'); update();">타바스코 핫소스</div>
             <div class="menu-elem" onclick=" ingr1_change('간장'); update();">간장</div>
-
+            
          </details>
         
         <!--양 입력-->
@@ -52,16 +52,13 @@
             <summary class="menu" id="ingr2" >g</summary>
             <div class="menu-elem" onclick=" ingr2_change('g'); update();">g</div>
             <div class="menu-elem" onclick=" ingr2_change('kg'); update();">kg</div>
-            <div class="menu-elem" onclick=" ingr2_change('mg'); update();">mg</div>
-            <div class="menu-elem" onclick=" ingr2_change('밥숟가락'); update();">밥숟가락</div>
-            <div class="menu-elem" onclick=" ingr2_change('차숟가락'); update();">차숟가락</div>
-            <div class="menu-elem" onclick=" ingr2_change('컵'); update();">컵</div>
             <div class="menu-elem" onclick=" ingr2_change('L'); update();">L</div>
             <div class="menu-elem" onclick=" ingr2_change('ml'); update();">ml</div>
-            <div class="menu-elem" onclick=" ingr2_change('cc'); update();">cc</div>
-            <div class="menu-elem" onclick=" ingr2_change('oz'); update();">oz</div>
-            <div class="menu-elem" onclick=" ingr2_change('pound'); update();">pound</div>
-         </details>
+        </details>
+
+
+        <input type = "submit" style="float:left" id="submit" onclick="conv()">
+        
     </div>
 
 
@@ -69,18 +66,18 @@
     
     <!--결과창-->
     <div id="rsult">
-        <p id="g"></p>g
+        <!-- <p id="g"></p>g
         <p id="kg"></p>kg
         <p id="mg"></p>mg
-        <br>
-        <p id="Ts"></p>밥숟가락
-        <p id="ts"></p>차숟가락
+        <br> -->
+        <!-- <p id="ts"></p>차숟가락 -->
+        <p id="spoon"></p>밥숟가락
         <p id="cup"></p>컵
-        <p id="L"></p>L
+        <!-- <p id="L"></p>L
         <p id="ml"></p>ml
         <p id="cc"></p>cc
         <p id="oz"></p>oz
-        <p id="pound"></p>pound
+        <p id="pound"></p>pound -->
     </div>
 
     <!--변환연산-->
@@ -99,7 +96,7 @@
                 case 'mg': w = v/1000; break;
                 case 'kg': w = v*1000; break;
             }
-            alert(toString(v));
+            // alert(toString(v));
         }
 
 
@@ -107,19 +104,34 @@
 
     </script>
 
+<script>
+    function conv(){
+        unit = document.getElementById('ingr2').innerHTML
+        n = document.getElementById('amount').value
 
-    <script>
-        function get_ing1(){
-
+        rsult = []
+        ucup = 190
+        uspoon = 10
+        if(unit=='g' || unit=='ml'){
+            cup = n/ucup
+            spoon = n/uspoon
+            arr = [cup,spoon]
+            rsult = arr
         }
-        function get_ing2(){
-
+        else if (unit=='kg' || unit=='L'){
+            cup = n*1000/ucup
+            spoon = n/uspoon
+            arr = [cup,spoon]
+            rsult = arr    
         }
-        function get_amount(){
-            const v = document.getElementById('amount').value;
+        document.getElementById('spoon').innerHTML = rsult[1];
+        document.getElementById('cup').innerHTML=rsult[0];
+    }
 
-        }
-    </script>
+
+
+
+</script>
     
 </body>
 </html>
