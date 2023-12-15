@@ -24,15 +24,27 @@
 
 <script>
 function count(){
-    count_text();
+    txt = document.getElementById("inputTxt").value;
+    count_text(txt);
+    count_exvoids();
 }
 
 
-function count_text(){
-    txt = document.getElementById("inputTxt").value;
-    console.log(txt);
-    console.log(txt.length);
+function count_text(txt){
+    // console.log(txt);
+    // console.log(txt.length);
     document.getElementById("count").innerHTML=txt.length;
+}
+
+function count_exvoids(txt){
+    
+    temp = txt;
+    if(temp != null){
+        temp.replace(" ",'');
+        console.log(temp);
+    }
+    document.getElementById("count_exvoid").innerHTML=temp.length;
+
 }
 
 
