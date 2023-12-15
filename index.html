@@ -7,131 +7,75 @@
 
     <link rel="stylesheet" href="mobile_style.css" />
     <script type="text/javascript" src="mobile.js"></script> 
-
-
+    <script type="text/javascript" src="index.js"></script> 
 
 </head>
-<body>
-    <!--로딩 때 창 크기에 따라 데스크탑/모바일 판단해서 해당 페이지로 옮겨주기-->
+<body style="background-color: #FFFAD6;">
+    
+
+<!--로딩 때 창 크기에 따라 데스크탑/모바일 판단해서 해당 페이지로 옮겨주기-->
     <script>
         if(window.innerHeight<window.innerWidth)
             document.location.href="desktop/desktop.html";
     </script>
-    mobile
 
-    
-    <!--맨 위의 입력창-->
-    <div id="input" style="width:max-content; height:fit-content;">
 
-        <!--종류 입력-->
-        <details style="float:left;">
-            <summary class="menu" id="ingr1" onchange="update()">설탕</summary>
-            <div class="menu-elem" onclick=" ingr1_change('설탕'); update();">설탕</div>
-            <div class="menu-elem" onclick=" ingr1_change('고추가루'); update();">고추가루</div>
-            <div class="menu-elem" onclick=" ingr1_change('소금'); update();">소금</div>
-            <div class="menu-elem" onclick=" ingr1_change('천일염'); update();">천일염</div>
-            <div class="menu-elem" onclick=" ingr1_change('다진마늘'); update();">다진마늘</div>
-            <div class="menu-elem" onclick=" ingr1_change('고추장'); update();">고추장</div>
-            <div class="menu-elem" onclick=" ingr1_change('된장'); update();">된장</div>
-            <div class="menu-elem" onclick=" ingr1_change('쌈장'); update();">쌈장</div>
-            <div class="menu-elem" onclick=" ingr1_change('올리브오일'); update();">올리브오일</div>
-            <div class="menu-elem" onclick=" ingr1_change('식용유'); update();">식용유</div>
-            <div class="menu-elem" onclick=" ingr1_change('발사믹소스'); update();">발사믹소스</div>
-            <div class="menu-elem" onclick=" ingr1_change('스리라차 소스'); update();">스리라차 소스</div>
-            <div class="menu-elem" onclick=" ingr1_change('타바스코 핫소스'); update();">타바스코 핫소스</div>
-            <div class="menu-elem" onclick=" ingr1_change('간장'); update();">간장</div>
+
+
+
+    <!-- <center>
+    <div id="header"></div>
+    <script>
+        const header = document.getElementById("header");
+        header.innerHTML = '<object type="text/html" data="header.html"></object>';
+    </script>
+    </center> -->
+
+    <center>
+<!--제목-->
+    <h2 style="line-height:50px;  font-size:large; text-align:center; width:90vw; height:50px; background-color:white; border-radius:10px;">글자수   &   발표시간   계산기</h2>
+    </center>
+
+    <!--contents-->
+    <div>
+<!--btn box-->
+        <center>
+        <div id="bar" style="width:90vw;height:50px;">
+            <!--speed btn-->
+            <div id="Speed" style="line-height:50px; text-align:center;   width:45vw; height:50px; background-color:#EDEDED; border-radius:10px; border-color: white; float:left; box-shadow:none;" onclick="content_toggle_btn(true)">
+                Speed
+            </div>
+            <!--count btn-->
+            <div id="Count" style="line-height:50px;text-align:center;  width:45vw; height:50px; background-color:white; border-radius:10px; border-color: white; float:left; box-shadow:none;" onclick="content_toggle_btn(false)">
+                Count
+            </div>
+        </div>
+        </center>
+       
+ <!--main box-->
+        <center>
+        <div id="mainBox" style="width:90vw; height:70vh;background-color:white; ">
             
-         </details>
-        
-        <!--양 입력-->
-        <input type="number" id="amount" placeholder="10" style="float:left;" onchange="update()">
-
-        <!--단위 입력-->
-        <!--종류 입력-->
-        <details style="float:left;">
-            <summary class="menu" id="ingr2" >g</summary>
-            <div class="menu-elem" onclick=" ingr2_change('g'); update();">g</div>
-            <div class="menu-elem" onclick=" ingr2_change('kg'); update();">kg</div>
-            <div class="menu-elem" onclick=" ingr2_change('L'); update();">L</div>
-            <div class="menu-elem" onclick=" ingr2_change('ml'); update();">ml</div>
-        </details>
-
-
-        <input type = "submit" style="float:left" id="submit" onclick="conv()">
-        
+        </div>
+        </center>
     </div>
 
 
-    <br>
-    
-    <!--결과창-->
-    <div id="rsult">
-        <!-- <p id="g"></p>g
-        <p id="kg"></p>kg
-        <p id="mg"></p>mg
-        <br> -->
-        <!-- <p id="ts"></p>차숟가락 -->
-        <p id="spoon"></p>밥숟가락
-        <p id="cup"></p>컵
-        <!-- <p id="L"></p>L
-        <p id="ml"></p>ml
-        <p id="cc"></p>cc
-        <p id="oz"></p>oz
-        <p id="pound"></p>pound -->
-    </div>
-
-    <!--변환연산-->
-    <script>//기본 단위 : g,l
-        
-
-        function update(){
-            //alert("test");
-            m=0;//부피 l
-            w=0;//무게(질량) g
-            d=0;//밀도 g/cm3(g/cm3에 1gg=1000mg)
-            v = 10;
-            var v = document.getElementById("amount").value;
-            switch(document.getElementById("ingr2").innerHTML){
-                case "g": w = v; break;
-                case 'mg': w = v/1000; break;
-                case 'kg': w = v*1000; break;
-            }
-            // alert(toString(v));
-        }
-
-
-
-
+<!--안에 컨텐츠 Count.html로 초기화-->
+    <script>
+        mainbox = document.getElementById("mainBox");
+        mainbox.innerHTML = '<object style="width:90vw; height:70vh;" type="text/html" data="speed&count/Count.html"></object>';        
     </script>
 
-<script>
-    function conv(){
-        unit = document.getElementById('ingr2').innerHTML
-        n = document.getElementById('amount').value
 
-        rsult = []
-        ucup = 190
-        uspoon = 10
-        if(unit=='g' || unit=='ml'){
-            cup = n/ucup
-            spoon = n/uspoon
-            arr = [cup,spoon]
-            rsult = arr
-        }
-        else if (unit=='kg' || unit=='L'){
-            cup = n*1000/ucup
-            spoon = n/uspoon
-            arr = [cup,spoon]
-            rsult = arr    
-        }
-        document.getElementById('spoon').innerHTML = rsult[1];
-        document.getElementById('cup').innerHTML=rsult[0];
-    }
+    <script>
+        
+    </script>
 
 
 
 
-</script>
-    
+
+
 </body>
 </html>

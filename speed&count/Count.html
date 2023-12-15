@@ -1,0 +1,52 @@
+ <!--text box-->
+ <center><textarea id="inputTxt" style="width:100%; height:50%;" value="" placeholder="여기에 입력" onkeydown="count()"></textarea></center>
+
+ <!--result-->
+ <div style="width:85vw;">
+    <div class="rsult_banner">글자 수</div>
+    <div class="rsult_num"id="count" >0</div>
+    
+    <div class="rsult_banner">공백제외</div>
+    <div class="rsult_num" id="count_exvoid" style="text-align: left; width:62vw; height:fit-content; border:1px solid gray; border-radius: 10px; float:left;">0</div>
+
+    <div class="rsult_banner">공백 수</div>
+    <div class="rsult_num" id="voids" style="text-align: left; width:62vw; height:fit-content; border:1px solid gray; border-radius: 10px; float:left;">0</div>
+
+    <div class="rsult_banner">단어 수</div>
+    <div class="rsult_num" id="words" style="text-align: left; width:62vw; height:fit-content; border:1px solid gray; border-radius: 10px; float:left;">0</div>
+
+    <div class="rsult_banner">문장 수</div>
+    <div class="rsult_num" id="sntnces" style="text-align: left; width:62vw; height:fit-content; border:1px solid gray; border-radius: 10px; float:left;">0</div>
+
+</div>
+
+
+
+<script>
+function count(){
+    count_text();
+}
+
+
+function count_text(){
+    txt = document.getElementById("inputTxt").value;
+    console.log(txt);
+    console.log(txt.length);
+    document.getElementById("count").innerHTML=txt.length;
+}
+
+
+
+
+</script>
+
+
+<!--style classes-->
+<style>
+.rsult_banner{
+    width:20vw; height:fit-content; background-color:#EDEDED; border-radius: 10px; float:left;
+}
+.rsult_num{
+    text-align: left; width:62vw; height:fit-content; border:1px solid gray; border-radius: 10px; float:left;
+}
+</style>
