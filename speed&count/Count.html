@@ -1,5 +1,5 @@
  <!--text box-->
- <center><textarea id="inputTxt" style="width:100%; height:50%;" value="" placeholder="여기에 입력" onkeydown="count()"></textarea></center>
+ <center><textarea id="inputTxt" style="width:100%; height:50%;" value="" placeholder="여기에 입력" onkeyup="count(this.value)"></textarea></center>
 
  <!--result-->
  <div style="width:85vw;">
@@ -15,36 +15,59 @@
     <div class="rsult_banner">단어 수</div>
     <div class="rsult_num" id="words" style="text-align: left; width:62vw; height:fit-content; border:1px solid gray; border-radius: 10px; float:left;">0</div>
 
-    <div class="rsult_banner">문장 수</div>
-    <div class="rsult_num" id="sntnces" style="text-align: left; width:62vw; height:fit-content; border:1px solid gray; border-radius: 10px; float:left;">0</div>
-
 </div>
 
 
 
 <script>
-function count(){
-    txt = document.getElementById("inputTxt").value;
-    count_text(txt);
-    count_exvoids();
+function count(v){
+    console.log("--------------------------");
+    count_text(v);
+    count_exvoids(v);
+    count_void(v);
+    count_word(v);
+}
+
+function count_text2(txt){
+
 }
 
 
 function count_text(txt){
-    // console.log(txt);
-    // console.log(txt.length);
     document.getElementById("count").innerHTML=txt.length;
 }
 
 function count_exvoids(txt){
-    
     temp = txt;
-    if(temp != null){
-        temp.replace(" ",'');
-        console.log(temp);
-    }
+    temp = temp.replace(/ /g,"");
+    temp = temp.replace(/\n/g,"");   
     document.getElementById("count_exvoid").innerHTML=temp.length;
+}
 
+function count_void(txt){
+    temp = txt;
+    temp = temp.replace(/ /g,"");
+    temp = temp.replace(/\n/g,"");
+    document.getElementById("voids").innerHTML=txt.length-temp.length;
+}
+
+function count_word(txt){
+    temp = txt;
+    temp = temp.split(' ');
+    // temp = temp.filter((elem)=>elem!=' ');
+    if(temp[temp.length-1] == ""){ temp.pop();}//맨 마지막 띄어쓰기 있으면 취급 안하게
+    temp = temp.length;
+    document.getElementById("words").innerHTML = temp;
+}
+
+function count_sntnce(txt){
+    temp = txt;
+    temp = temp.split('.');
+    console.log(temp);
+    // temp = temp.filter((elem)=>elem!=' ');
+    if(temp[temp.length-1] == ""){ temp.pop();}//맨 마지막 띄어쓰기 있으면 취급 안하게
+    temp = temp.length;
+    document.getElementById("sntnces").innerHTML = temp;
 }
 
 
