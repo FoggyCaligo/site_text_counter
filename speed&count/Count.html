@@ -20,37 +20,39 @@
 
 
 <script>
+//업데이트 함수
 function count(v){
-    console.log("--------------------------");
+    // console.log("--------------------------");
     count_text(v);
     count_exvoids(v);
     count_void(v);
-    count_word(v);
+    // count_word(v);
+    count_word2(v);
 }
 
 function count_text2(txt){
 
 }
 
-
+//글자수 카운트
 function count_text(txt){
     document.getElementById("count").innerHTML=txt.length;
 }
-
+//공백제외 카운트
 function count_exvoids(txt){
     temp = txt;
     temp = temp.replace(/ /g,"");
-    temp = temp.replace(/\n/g,"");   
+    temp = temp.replace(/\n/g,""); 
     document.getElementById("count_exvoid").innerHTML=temp.length;
 }
-
+//공백 카운트
 function count_void(txt){
     temp = txt;
     temp = temp.replace(/ /g,"");
     temp = temp.replace(/\n/g,"");
     document.getElementById("voids").innerHTML=txt.length-temp.length;
 }
-
+//단어 카운트
 function count_word(txt){
     temp = txt;
     temp = temp.split(' ');
@@ -59,11 +61,22 @@ function count_word(txt){
     temp = temp.length;
     document.getElementById("words").innerHTML = temp;
 }
-
+//단어 카운트2
+function count_word2(txt){
+    temp = txt;
+    temp = temp.split(" ");
+    console.log(temp);
+    temp = temp.filter((vo)=>vo !== "");//빈 문자열 제거(띄어쓰기 여러개 있을 경우)
+    console.log(temp);
+    temp = temp.length;
+    
+    document.getElementById("words").innerHTML = temp;
+}
+//(문장카운트)
 function count_sntnce(txt){
     temp = txt;
     temp = temp.split('.');
-    console.log(temp);
+    // console.log(temp);
     // temp = temp.filter((elem)=>elem!=' ');
     if(temp[temp.length-1] == ""){ temp.pop();}//맨 마지막 띄어쓰기 있으면 취급 안하게
     temp = temp.length;
