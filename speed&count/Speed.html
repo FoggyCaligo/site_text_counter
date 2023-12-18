@@ -1,4 +1,4 @@
-<center>
+ <center>
 <div id="subtitle" style="padding:10vh 0 0; align-items:center; text-align:center; border-radius:10px;background-color:#EDEDED ; width:100%; height:10vh;">
 <b>발표시간 측정 기준 설정</b>
 </div>
@@ -12,19 +12,17 @@
 
 <center>
 <div style="display:grid; grid-template-columns: 15vw 65vw 15vw;grid-template-rows:auto;">
-    <div id="start" style="text-align:center; border-radius:10px;border:2px solid #82B366;background-color:#D5E8D4;height:fit-content; " onclick="start()">
+    <div id="start" style="text-align:center; border-radius:10px;border:2px solid #82B366;background-color:#D5E8D4;height:fit-content; " onclick="resetClock(); startClock()">
     시작
     </div>
-    <div id="timer" style="text-align:center; border-radius:10px;border:2px solid #EDEDED;height:fit-content; " onclick="start()">
+    <div id="timer" style="text-align:center; border-radius:10px;border:2px solid #EDEDED;height:fit-content;">
     00:00s
     </div>
-    <div id="start" style="text-align:center; border-radius:10px;border:2px solid #B85450;background-color:#F8CECC;height:fit-content; " onclick="start()">
+    <div id="end" style="text-align:center; border-radius:10px;border:2px solid #B85450;background-color:#F8CECC;height:fit-content; " onclick="stopClock()">
     정지
     </div>
 </div>
 </center>
-
-
 
 
 
@@ -36,4 +34,71 @@
 </div><!--21개 단어-->
 </center>
     
+
+<center>
+    <div id="subtitle" style=" align-items:center; text-align:center; border-radius:10px;background-color:#EDEDED ; width:100%; height:fit-content;">
+        <b id="wpm">0</b>wpm(분당 가독 단어 수)
+    </div>
+</center>
+
+
+
+<script>
+    let timerId;
+    let time = 0;
+    const timer = document.getElementById("timer");
+    let  hour, min, sec;
+
+    function printTime() {
+        time++;
+        timer.innerText = getTimeFormatString();
+    }
+    function getTimeFormatString() {
+        hour = parseInt(String(time / (60 * 60)));
+        min = parseInt(String((time - (hour * 60 * 60)) / 60));
+        sec = time % 60;
+
+        return String(min).padStart(2, '0') + ":" + String(sec).padStart(2, '0');
+    }
+    //시계 시작 - 재귀호출로 반복실행
+    function startClock() {
+        printTime();
+        stopClock();
+        
+        show_wps();
+
+        timerId = setTimeout(startClock, 1000);
+    }
+
+    //시계 중지
+    function stopClock() {
+        if (timerId != null) {
+            clearTimeout(timerId);
+        }
+    }
+    // 시계 초기화
+    function resetClock() {
+        stopClock()
+        timer.innerText = "00:00:00";
+        time = 0;
+    }
+
+
+    function show_wps(){
+        wpm = 0;
+        words = 21;
+
+        hour = parseInt(String(time / (60 * 60)));
+        min = parseInt(String((time - (hour * 60 * 60)) / 60));
+        sec = time % 60;
     
+        seconds = min*60+sec;
+        console.log(time);
+        wpm = 21*(60/time);
+        document.getElementById("wpm").innerHTML=String(wpm);
+    }
+
+    
+
+
+</script>
