@@ -86,16 +86,12 @@
 
     function show_wps(){
         wpm = 0;
-        words = 21;
 
-        hour = parseInt(String(time / (60 * 60)));
-        min = parseInt(String((time - (hour * 60 * 60)) / 60));
-        sec = time % 60;
-    
-        seconds = min*60+sec;
-        console.log(time);
         wpm = 21*(60/time);
         document.getElementById("wpm").innerHTML=String(wpm);
+        localStorage.setItem("wpm",wpm);
+        //localStorage.getItem('key');
+
     }
 
     
