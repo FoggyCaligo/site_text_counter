@@ -1,4 +1,6 @@
 //컨텐츠토글버튼
+
+
 function content_toggle_btn(b){
     speed = document.getElementById("Speed");
     count = document.getElementById("Count");
@@ -7,6 +9,7 @@ function content_toggle_btn(b){
         speed.style.backgroundColor="white";
         count.style.backgroundColor="#EDEDED";
         mainbox.innerHTML = '<object style="width:90vw; height:70vh;" type="text/html" data="speed&count/Speed.html"></object>';
+        
         // get_html1("mainBox","speed&count/Speed.html");
     }else{
         speed.style.backgroundColor="#EDEDED";
