@@ -5,14 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body style="background-color: #FFFAD6;">
+  
+
     <script>
         if(window.innerHeight>=window.innerWidth)
             document.location.href="../index.html";
     </script>
-    desktop
+
 
     
+<!--contents--> 
+<div id="Speed" style="float:left; width:45vw;height:80vh">
+    <!--btn box-->
+    <center>
+    <div id="bar" style="width:45vw;height:50px;">
+                <!--speed btn-->
+        <div id="Speed_title" style="line-height:50px; text-align:center;   width:45vw; height:50px; background-color:#EDEDED; border-radius:10px; border-color: white; float:left; box-shadow:none;" >
+            Speed
+        </div>
+    </div>
+    </center>
+     <!--main box-->
+    <center>
+    <div id="Speed_content" style="width:45vw; height:70vh;background-color:white; ">
+        <script>
+            mainbox = document.getElementById("Speed_content");
+            mainbox.innerHTML = '<object style="width:45vw; height:70vh;" type="text/html" data="../speed&count/Speed.html"></object>';   
+                 
+        </script>
+    </div>
+    </center>
+</div>
+
+
+   
+<!--contents--> 
+<div id="Count" style="float:left; width:45vw;height:80vh">
+    <!--btn box-->
+    <center>
+    <div id="bar" style="width:45vw;height:50px;">
+                <!--speed btn-->
+        <div id="Count_title" style="line-height:50px; text-align:center;   width:45vw; height:50px; background-color:#EDEDED; border-radius:10px; border-color: white; float:left; box-shadow:none;" >
+            Count
+        </div>
+    </div>
+    </center>
+     <!--main box-->
+    <center>
+    <div id="Count_content" style="width:45vw; height:70vh;background-color:white; ">
+        <script>
+            mainbox = document.getElementById("Count_content");
+            mainbox.innerHTML = '<object style="width:45vw; height:70vh;" type="text/html" data="../speed&count/Count.html"></object>';   
+                 
+        </script>
+    </div>
+    </center>
+</div>
+
+
+
 
 
 </body>
