@@ -98,10 +98,9 @@ function count_sntnce(txt){
 
 function count_time(){
     wpm = localStorage.getItem("wpm");
-    words = document.getElementById('words').innerHTML;
-    document.getElementById("time").innerHTML=wpm*words;
+    exvoid = document.getElementById('count_exvoid').innerHTML;
+    document.getElementById("time").innerHTML=wpm*exvoid;
 
-    
 }
 //wpm =  word*(60/sec);
 
