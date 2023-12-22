@@ -37,13 +37,22 @@
 
 <center>
     <div id="subtitle" style=" align-items:center; text-align:center; border-radius:10px;background-color:#EDEDED ; width:100%; height:fit-content;">
-        <b id="wpm">0</b>wpm(분당 가독 단어 수)
+        단어당 평균 <b id="wpm">0</b>초
     </div>
 </center>
 
+<script>
+    function load(){
+        document.getElementById("wpm").innerHTML = localStorage.getItem("wpm");
+    }
+    load();
+</script>
 
 
 <script>
+
+
+
     let timerId;
     let time = 0;
     const timer = document.getElementById("timer");
@@ -74,6 +83,7 @@
     function stopClock() {
         if (timerId != null) {
             clearTimeout(timerId);
+            localStorage.setItem("wpm",wpm);
         }
     }
     // 시계 초기화
@@ -84,13 +94,16 @@
     }
 
 
+    //calc
     function show_wps(){
         wpm = 0;
 
-        wpm = 21*(60/time);
+        //wpm = 21*(60/time);
+        wpm = time/21;
         document.getElementById("wpm").innerHTML=String(wpm);
         localStorage.setItem("wpm",wpm);
         //localStorage.getItem('key');
+
 
     }
 

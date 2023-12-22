@@ -22,16 +22,13 @@
     <div class="rsult_banner">발표 시간</div>
     <div class="rsult_num" id="time" style="text-align: left; width:62vw; height:fit-content; border:1px solid gray; border-radius: 10px; float:left;">0</div>
 
+
     
 </div>
 
 
 
 
-<script>
-    //wpm 설정
-    
-</script>
 
 
 
@@ -102,14 +99,17 @@ function count_sntnce(txt){
 function count_time(){
     wpm = localStorage.getItem("wpm");
     words = document.getElementById('words').innerHTML;
-    document.getElementById("time").innerHTML=wpm/words*60;
+    document.getElementById("time").innerHTML=wpm*words;
+
+    
 }
+//wpm =  word*(60/sec);
 
 </script>
 
 
 <script>
-    //이전 입력값 가져오기
+    //이전 입력값 가져오기ew
     function load(){    
         past_input = localStorage.getItem("input");
         document.getElementById("inputTxt").value=past_input;
