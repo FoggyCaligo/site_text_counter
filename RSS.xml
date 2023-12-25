@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <rss version="2.0">
+  <channel>
+    <title>글자수 세기 사이트</title>
+    <link>https://foggycaligo.github.io/site_text_counter/</link>
+    <description>글자 수 계산과 발표시간 측정 해주는 사이트</description>
+
+    <item>
+      <title>모바일 버전</title>
+      <link>https://foggycaligo.github.io/site_text_counter/index.html</link>
+
+      <description>모바일 버전</description>
+    </item>
+
+    <item>
+      <title>데스크탑 버전</title>
+      <link>https://foggycaligo.github.io/site_text_counter/desktop/desktop.html</link>
+      <description>데스크탑 버전</description>
+    </item>
+  </channel>
+</rss>
